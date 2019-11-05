@@ -48,7 +48,7 @@ m_window.EndDraw();
 void Game::updateScore()
 {
 
-	std::string str= "Score:\n" + std::to_string(snake->getPlayerPtr()->GetScore());
+	std::string str= "Score:\n" + std::to_string(snake->getPlayerPtr()->GetScore()) + "\nPress F5 for fullscreen";
 
 	if (snake->getPlayerPtr()->isGameOver())
 		str+= "\nGame Over\nPress Enter Restart";

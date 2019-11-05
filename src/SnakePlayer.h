@@ -4,9 +4,8 @@
 #include <algorithm>
 #include <deque>
 #include <random>
-
 template <class T>
-bool hasDupicates(const std::deque<T> &vec)
+bool hasDupicates(const std::deque<T> &vec) 
 {
 	auto it = vec.begin();
 	while (it != vec.end())
@@ -105,33 +104,46 @@ class SnakePlayer
 
 		void HandleInput(sf::Keyboard::Key key)
 		{
+			//Simple and gets job done
 			if (key == sf::Keyboard::Up)
 			{
+				if(!f_isMovingDown) // if player tries to move up while moving down would trigger "Game Over" state.
+				{
 				f_isMovingUp =true;
 				f_isMovingDown = false;
 				f_isMovingLeft = false;
 				f_isMovingRight = false;
+				}
 			}
 			if (key == sf::Keyboard::Down)
 			{
+				if(!f_isMovingUp)
+				{
 				f_isMovingUp = false;
 				f_isMovingDown = true;
 				f_isMovingLeft = false;
 				f_isMovingRight = false;
+				}
 			}
 			if (key == sf::Keyboard::Left)
 			{
+				if(!f_isMovingRight)
+				{
 				f_isMovingUp = false;
 				f_isMovingDown = false;
 				f_isMovingLeft = true;
 				f_isMovingRight = false;
+				}
 			}
 			if (key == sf::Keyboard::Right)
 			{
+				if(!f_isMovingLeft)
+				{
 				f_isMovingUp = false;
 				f_isMovingDown = false;
 				f_isMovingLeft = false;
 				f_isMovingRight = true;
+				}
 			}
 
 		}
@@ -142,7 +154,7 @@ class SnakePlayer
 			if (!f_GameOver)
 			{
 
-			if (hasDupicates(m_snakeNodes))
+			if (hasDupicates(m_snakeNodes)) //Here hasDupicates template uses as check if colision is found.
 			{
 				f_GameOver= true;
 			}
